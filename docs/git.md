@@ -21,6 +21,20 @@ ssh -T git@gitee.com
 
 ## Config
 
+> Win11设置系统默认编码格式为utf-8
+>
+> 1、打开**【设置】**菜单；
+>
+> 2、左侧点击**【时间和语言】**，右侧点击**【语言和区域】**；
+>
+> 3、相关设置下，点击**【管理语言设置】**；
+>
+> 4、区域窗口，管理选项卡下，点击**【更改系统区域设置】**；
+>
+> 5、区域设置窗口，勾选**【Beta 版：使用 Unicode UTF-8 提供全球语言支持(U)】**，然后点击**【确定】**；
+>
+> 6、更改系统区域设置后，还需要重启系统才可以生效；
+
 ``` sh
 # 用户设置
 git config --global user.name "tanwlanyue"
@@ -44,7 +58,7 @@ git commit --amend
 # 修改过去的 commit message
 git rebase -i parentCommitId # (1)
 # 合并连续的commit
-git rebase -i parentCommitId # (2) 选择需要修改的commit  前面的pick改为s
+git rebase -i parentCommitId # (2)
 # 查看最近三次提交记录
 git log -3
 # 分离头指针保存
