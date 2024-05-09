@@ -41,6 +41,13 @@ git config --global https.sslVerify "false"
 git config --global core.quotepath false
 git config --global gui.encoding utf-8
 ```
+##  Project
+
+```sh
+# 解决vscode中git操作总是需要输入账号密码的问题
+git config --global credential.helper store
+```
+
 <!-- more -->
 
 ## Command
