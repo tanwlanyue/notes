@@ -4,7 +4,7 @@ site_author: tanwlanyue
 repo_name: tanwlanyue/notes
 repo_url: https://github.com/tanwlanyue/notes
 extra_css:
-  - stylesheets/extra.css
+  - assets/css/extra.css
 theme:
   name: material
   logo: assets/note.svg
