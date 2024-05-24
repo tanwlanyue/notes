@@ -72,6 +72,18 @@ git diff HEAD HEAD~1
 git push -f origin <branch>
 # 强制拉取远程分支到本地分支
 git fetch origin && git reset –hard origin/<branch>
+# working directory->>stage/index
+git add
+# stage/index->>history
+git commit
+# history->>working directory
+git checkout
+# history->>garbage
+git reset --hard
+# history->>working directory
+git reset (--mixed)
+# history->>stage/index
+git reset --soft
 ```
 
 1. 选择需要修改的commit  前面的pick改为r
