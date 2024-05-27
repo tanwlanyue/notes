@@ -30,7 +30,7 @@ f(nullptr);         //调用重载函数f的f(void*)版本
 auto result = findRecord( /* arguments */ );
 if (result == 0) {
     …
-}
+} 
 ````
 如果你不知道`findRecord`返回了什么（或者不能轻易的找出），那么你就不太清楚到底`result`是一个指针类型还是一个整型。毕竟，`0`（用来测试`result`的值的那个）也可以像我们之前讨论的那样被解析。但是换一种假设如果你看到这样的代码：
 ````cpp

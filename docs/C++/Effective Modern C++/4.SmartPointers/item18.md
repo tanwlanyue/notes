@@ -2,7 +2,7 @@
 
 **CHAPTER 4 Smart Pointers**
 
-我们可以试着枚举一些为什么原始指针很难被爱的原因：
+诗人和歌曲作家喜欢爱。有时候喜欢计数。很少情况下两者兼有。受伊丽莎白·巴雷特·勃朗宁（Elizabeth Barrett Browning）对爱和数的不同看法的启发（“我怎么爱你？让我数一数。”）和保罗·西蒙（Paul Simon）（“离开你的爱人必须有50种方法。”），我们可以试着枚举一些为什么原始指针很难被爱的原因：
 
 1. 它的声明不能指示所指到底是单个对象还是数组。
 2. 它的声明没有告诉你用完后是否应该销毁它，即指针是否拥有所指之物。
@@ -119,7 +119,7 @@ makeInvestment(Ts&&... params)
   };
   ```
 
-在C++14中，函数的返回类型推导存在（参阅[Item3](../1.DeducingTypes/item3.md)），意味着`makeInvestment`可以以更简单，更封装的方式实现：
+在C++14中，函数返回类型推导的存在（参阅[Item3](../1.DeducingTypes/item3.md)），意味着`makeInvestment`可以以更简单，更封装的方式实现：
 
 ```cpp
 template<typename... Ts>
@@ -149,7 +149,7 @@ auto makeInvestment(Ts&&... params)                 //C++14
 }
 ```
 
-我之前说过，当使用默认删除器时（如`delete`），你可以合理假设`std::unique_ptr`对象和原始指针大小相同。当自定义删除器时，情况可能不再如此。函数指针形式的删除器，通常会使`std::unique_ptr`的从一个字（*word*）大小增加到两个。对于函数对象形式的删除器来说，变化的大小取决于函数对象中存储的状态多少，无状态函数（stateless function）对象（比如不捕获变量的*lambda*表达式）对大小没有影响，这意味当自定义删除器可以实现为函数或者*lambda*时，尽量使用*lambda*：
+我之前说过，当使用默认删除器时（如`delete`），你可以合理假设`std::unique_ptr`对象和原始指针大小相同。当自定义删除器时，情况可能不再如此。函数指针形式的删除器，通常会使`std::unique_ptr`的大小从一个字（*word*）增加到两个。对于函数对象形式的删除器来说，变化的大小取决于函数对象中存储的状态多少，无状态函数（stateless function）对象（比如不捕获变量的*lambda*表达式）对大小没有影响，这意味当自定义删除器可以实现为函数或者*lambda*时，尽量使用*lambda*：
 
 ```cpp
 auto delInvmt1 = [](Investment* pInvestment)        //无状态lambda的
