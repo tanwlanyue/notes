@@ -39,6 +39,57 @@ shard_ptr 的拷贝成本比裸指针高 可以用const reference传递
 
 
 
+```c++
+#include <iostream>
+#include <cassert>
+#include <memory>
+#include <mutex>
+#include <map>
+
+class Stock {
+public:
+    Stock(const std::string& key) : key_(key) {}
+    const std::string& GetKey() const { return key_; }
+private:
+    std::string key_;
+};
+
+class StockFactory : public std::enable_shared_from_this<StockFactory> {
+public:
+    std::shared_ptr<Stock> Get(const std::string& key) {
+        std::shared_ptr<Stock> pStock;
+        std::lock_guard<std::mutex> lock(factoryMutex_);
+        std::weak_ptr<Stock>& wkStock = stocks_[key];
+        pStock = wkStock.lock();
+        if (!pStock) {
+            std::weak_ptr<StockFactory> wkFactory = shared_from_this();
+            pStock.reset(new Stock(key), [wkFactory](Stock* p) { 
+                auto pFactory = wkFactory.lock();
+                if (pFactory) {
+                    pFactory->deleteStock(p);
+                }
+            });
+            wkStock = pStock;
+        }
+        return pStock;
+    }
+private:
+    void deleteStock(Stock* stock) {
+        if (!stock) {
+            std::lock_guard<std::mutex> lock(factoryMutex_);
+            stocks_.erase(stock->GetKey());
+        }
+    }
+private:
+    std::mutex factoryMutex_;
+    std::map<std::string, std::weak_ptr<Stock>> stocks_;
+};
+
+int main() {
+    return 0;
+}
+```
+
 
 
 
