@@ -90,13 +90,35 @@ int main() {
 }
 ```
 
+## shared_ptr  copy on write
+
+
+
+taskqueue   
+
+produce consumter queue
+
+count down latch
+
+
+
+## Go服务端
+
+读nng和百度的brpc，其中brpc的文档值得一读，会涉及到工业界真正想解决的问题。TCP通信部分了解到这个程度就够了，毕竟是早就成熟的领域。2. 读完ddia和它附录里有意思的论文，读leveldb和redis，然后了解下lucene。这样对存储方面有初步认知。有空再去读innodb。3. 读腾讯的inference框架ncnn，了解如何做计算优化。4. 读intel tbb的work stealing用户级线程调度。5. 我觉的应届生很难有时间写出有意义的完整项目，但可以写一些有意义的数据结构：可以用C++实现类似redis但又支持泛型的radix tree，用C++实现fit in内存且吞吐吊打lucene的倒排索引。
+
+作者：不谙世事的吴同学
+链接：https://www.zhihu.com/question/394704611/answer/1245846184
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+进程有独立的地址空间
+
+线程共享地址空间
 
 
 
 
 
-
-
-
-
-
+p84
