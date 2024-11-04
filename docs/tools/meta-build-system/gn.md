@@ -1,54 +1,26 @@
-https://zhuanlan.zhihu.com/p/136954435?utm_oi=1118087249564205056
+GN 是一种专门生成 Ninja 文件的工具，主要用于 Google 的项目中，而 CMake 则是一个更加通用的构建系统生成器，可以生成多种构建系统文件，包括 Ninja 文件。这三者在构建系统中各有其用途和优势。
 
-
-
-`GN`（Generate Ninja）和`Ninja`是构建系统中常用的工具，而`CMake`是一种跨平台的构建系统生成器。这三者之间有一定的关系和用途上的区别。
-
-### GN（Generate Ninja）
+GN（Generate Ninja）
 
 - **用途**：GN 是一个生成 Ninja 构建文件的工具，最初是由 Google 为 Chromium 项目开发的。
 - **特点**：GN 通过定义 `.gn` 文件和 `BUILD.gn` 文件来描述构建过程，然后生成 Ninja 构建文件。
-- **优点**：与手动编写 Ninja 文件相比，GN 提供了更高层次的抽象，简化了构建文件的编写和维护。
+- **优点**：与手动编写 Ninja 文件相比，GN 提供了更高层次的抽象，简化了构建文件的编写和维护。提供了工具查询模块依赖图谱。
 
-### Ninja
+Ninja
 
 - **用途**：Ninja 是一个专注于速度的小型构建系统，主要用于快速执行增量构建。
 - **特点**：Ninja 构建文件通常由其他工具（如 GN 或 CMake）生成，而不是手动编写。
 - **优点**：Ninja 非常快，适用于需要频繁编译的大型项目。
 
-### CMake
+CMake
 
 - **用途**：CMake 是一个跨平台的构建系统生成器，用于生成本地构建系统文件（如 Makefile、Ninja 文件、Visual Studio 项目文件等）。
 - **特点**：CMake 使用 `CMakeLists.txt` 文件来描述项目的构建配置，可以生成适用于不同平台和构建工具的配置文件。
 - **优点**：CMake 的跨平台支持非常强大，能够生成多种类型的构建系统文件，广泛应用于各种开源项目和企业项目中。
 
-### 关系
+---
 
-1. **GN 和 Ninja**：
-   - GN 直接生成 Ninja 文件。
-   - GN 主要用于 Chromium 项目及其他类似项目中，以充分利用 Ninja 的构建速度。
-
-2. **CMake 和 Ninja**：
-   - CMake 可以生成 Ninja 文件以及其他构建系统文件（如 Makefile、Visual Studio 项目文件等）。
-   - 在配置 CMake 项目时，可以指定使用 Ninja 作为构建工具（例如，使用 `-G Ninja` 选项）。
-
-### 示例
-
-**使用 GN 和 Ninja：**
-```sh
-gn gen out/Default
-ninja -C out/Default
-```
-
-**使用 CMake 和 Ninja：**
-```sh
-cmake -G Ninja -B build
-ninja -C build
-```
-
-总之，GN 是一种专门生成 Ninja 文件的工具，主要用于 Google 的项目中，而 CMake 则是一个更加通用的构建系统生成器，可以生成多种构建系统文件，包括 Ninja 文件。这三者在构建系统中各有其用途和优势。
-
-
+[ninja和gn](https://zhuanlan.zhihu.com/p/136954435?utm_oi=1118087249564205056)
 
 ```
 # 导入其他GN配置文件，这些配置文件可能定义了一些共用的编译选项或者依赖项
