@@ -1,0 +1,15 @@
+@media (min-width: 1080px) {
+    .md-grid {
+        max-width: 66rem;
+    }
+}
+  
+@media (min-width: 2160px) {
+    .md-grid {
+        max-width: 75rem;
+    }    
+}
+
+html {
+    scrollbar-gutter: stable;
+}
