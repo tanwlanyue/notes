@@ -96,3 +96,11 @@ ohos_shared_library("camera_framework") {
 }
 ```
 
+---
+
+如果项目由许多源文件组成，并且分布在各个子目录下，如何将它们编译链接到一起呢？
+
+这时候 GNU Make 就闪亮登场了，它能让你在一个脚本里（即所谓的 `Makefile`）定义整个编译流程以及各个目标文件与源文件之间的依赖关系，并且只重新编译你的修改会影响到的部分，从而降低编译的时间。[写Makefile](https://seisman.github.io/how-to-write-makefile/overview.html) 太麻烦了，直接学Cmake吧
+
+CMake 是类似于 GNU make 的跨平台自动软件构建工具，使用 CMakeLists.txt 定义构建规则，相比于 make 它提供了更多的功能，在各种软件构建上广泛使用。[如何学习 CMake?](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)  [视频教程](https://www.bilibili.com/video/BV14h41187FZ)
+
